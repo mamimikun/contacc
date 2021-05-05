@@ -1,1 +1,1 @@
-web: gunicorn contaccs.wsgi --log-file -
+web: gunicorn contacc.contacc.wsgi --log-file -
