@@ -19,3 +19,12 @@ def contactCreate(request):
     else:
         print(serializer.errors)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def contactUpdate(request):
+    serializer = ContactSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        print(serializer.errors)
+    return Response(serializer.data)
