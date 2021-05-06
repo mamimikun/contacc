@@ -16,8 +16,8 @@ class ContactSerializer(serializers.Serializer):
     def update(self, instance, validated_data):
         instance.name = validated_data.get('name', instance.name)
         instance.lastname = validated_data.get('lastname', instance.lastname)
-        instance.company = validated_data.get('company', instance.created)
-        instance.phone_number = validated_data.get('phone_number', instance.company)
+        instance.company = validated_data.get('company', instance.company)
+        instance.phone_number = validated_data.get('phone_number', instance.phone_number)
         instance.email = validated_data.get('email', instance.phone_number)
         instance.save()
         return instance

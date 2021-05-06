@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+    <!-- You should properly set the path from the main file. -->
+    <title>contacc</title>
+  </head>
+  <body>
+    <div class="container" style="padding: 5vw">
+      {% block body %}
+      <div class="row">
+	<div class="column">
+	  <a class="button" href="/api/contacts/create/">add contact</a>
+	</div>
+      </div>
+      <div class="row">
+	<div class="column">
+	  <table>
+	    <thead>
+	      <tr>
+		<th>Contact name</th>
+		<th>Delete</th>
+		<th>Modify</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      {% for contact in page_obj.object_list %}
+	      <tr>
+		<td>{{contact.name}} {{contact.lastname}}</td>
+		<td><a class="button" href="/api/contacts/delete/{{ contact.id }}">del</a></td>
+		<td><a class="button" href="/api/contacts/update/{{ contact.id }}">mod</a></td>
+	      <tr>
+	      {% endfor %}
+	    </tbody>
+	  </table>
+	</div>
+      </div>
+      <div class="row">
+	<div class="column">
+            {% if page_obj.has_previous %}          
+            <a class="button" href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+	</div>
+	<div class="column">
+          <h5>{{ page_obj.number }}</h5>
+	</div>
+	<div class="column">    
+          {% if page_obj.has_next %}
+          <a class="button" href="?page={{ page_obj.next_page_number }}">next</a>
+          {% endif %}
+	</div>
+      </div>`
+      {% endblock %}
+    </div>
+  </body>
+</html>
