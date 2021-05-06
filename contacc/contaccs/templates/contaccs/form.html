@@ -1,0 +1,15 @@
+{% extends "contaccs/contact_list.html" %}
+
+{% block body %}
+<form action="{{ action }}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input class="button" type="submit" value="submit">
+</form>
+
+<div class="row">
+  <div class="column">
+    <a class="button" href="/api/contacts/">home</a>
+  </div>
+</div>
+{% endblock %}
