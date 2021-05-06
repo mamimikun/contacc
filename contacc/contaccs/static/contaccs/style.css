@@ -1,4 +1,4 @@
-/* Extending The Inheritances */
+
 
 /* Custom color */
 .button-black {
@@ -25,11 +25,9 @@
 }
 
 
-/* Larger than mobile screen */
-@media (min-width: 40.0rem) { ... }
-
-/* Larger than tablet screen */
-@media (min-width: 80.0rem) { ... }
-
-/* Larger than desktop screen */
-@media (min-width: 120.0rem) { ... }
+@media (max-width: 40rem) {
+    .row .column.responsive[class*=" column-"] {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
