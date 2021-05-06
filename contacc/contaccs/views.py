@@ -32,8 +32,9 @@ def contactRead(request, contact_id):
 
 # this pulls out the form
 def contactCreate(request):
+    action = '/api/contacts/create/'
     form = ContactForm()
-    return render(request, 'contaccs/form.html',  {'form': form})
+    return render(request, 'contaccs/form.html',  {'form': form, 'action':action})
 
 # the actual post verb
 @api_view(['POST'])
