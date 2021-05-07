@@ -34,7 +34,7 @@
 	  <form action="/api/contacts/" method="get">
 	    <input type="text" placeholder="name" name="name">
 	    <input type="text" placeholder="last name" name="lastname">
-	    <input class="button" type="submit" value="filter">
+	    <input class="button button-black" type="submit" value="filter">
 	    <a class="button button-black button-outline" href="/api/contacts/">clear filter</a>
 	  </form>
 	</div>
@@ -52,9 +52,9 @@
 	      {% for contact in page_obj.object_list %}
 	      <tr>
 		<td>{{contact.name}} {{contact.lastname}}</td>
-		<td style="text-align: right;"><a class="button" href="/api/contacts/read/{{ contact.id }}">view</a>
-		<a class="button button-red" href="/api/contacts/deleteconfirm/{{ contact.id }}">del</a>
-		<a class="button button-blue" href="/api/contacts/updateform/{{ contact.id }}">mod</a></td>
+		<td style="text-align: right;"><a class="button button-black button-outline" href="/api/contacts/read/{{ contact.id }}">view</a>
+		<a class="button button-black" href="/api/contacts/deleteconfirm/{{ contact.id }}">del</a>
+		<a class="button button-black button-outline" href="/api/contacts/updateform/{{ contact.id }}">mod</a></td>
 	      <tr>
 	      {% endfor %}
 	    </tbody>
