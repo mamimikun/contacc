@@ -8,4 +8,4 @@ Small crud written in (mostly) python. Stack is as follows:
 
 The whole thing is hosted [here](https://contacc.herokuapp.com/api/contacts/).
 
-You can read a small user manual on the [wiki page]{https://github.com/mamimikun/contacc/wiki}.
+You can read a small user manual on the [wiki page](https://github.com/mamimikun/contacc/wiki).
