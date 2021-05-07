@@ -1,0 +1,22 @@
+{% extends "contaccs/contact_list.html" %}
+
+{% block body %}
+
+<h3> invalid fields: <h3>
+    
+    {% for error in errors %}
+    <div class="row">
+      <div class="column">
+	{{ error }}
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="row">
+      <div class="column">
+	<a class="button" href="/api/contacts/">home</a>
+      </div>
+    </div>
+    
+
+{% endblock %}

@@ -15,7 +15,7 @@
     <!-- You should properly set the path from the main file. -->
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'contaccs/style.css' %}">
-    <title>contacc</title>
+    <title>contaccs</title>
   </head>
   <body>
     <div class="container" style="padding: 5vw">
@@ -28,6 +28,15 @@
       <div class="row">
 	<div class="column">
 	  <a class="button button-black" href="/api/contacts/form/">add contact</a>
+	  <br>
+	  <a class="button button-black button-outline" href="/api/contacts/">clear search</a>
+	</div>
+	<div class="column">
+	  <form action="/api/contacts/" method="get">
+	    <input type="text" placeholder="name" name="name">
+	    <input type="text" placeholder="last name" name="lastname">
+	    <input class="button" type="submit" value="search">
+	  </form>
 	</div>
       </div>
       <div class="row">
@@ -36,18 +45,16 @@
 	    <thead>
 	      <tr>
 		<th>Contact name</th>
-		<th>View</th>
-		<th>Delete</th>
-		<th>Modify</th>
+		<th>Actions</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      {% for contact in page_obj.object_list %}
 	      <tr>
 		<td>{{contact.name}} {{contact.lastname}}</td>
-		<td><a class="button" href="/api/contacts/read/{{ contact.id }}">view</a></td>
-		<td><a class="button button-red" href="/api/contacts/delete/{{ contact.id }}">del</a></td>
-		<td><a class="button button-blue" href="/api/contacts/updateform/{{ contact.id }}">mod</a></td>
+		<td><a class="button" href="/api/contacts/read/{{ contact.id }}">view</a>
+		<a class="button button-red" href="/api/contacts/deleteconfirm/{{ contact.id }}">del</a>
+		<a class="button button-blue" href="/api/contacts/updateform/{{ contact.id }}">mod</a></td>
 	      <tr>
 	      {% endfor %}
 	    </tbody>
@@ -59,25 +66,25 @@
 	<div class="column">
 	  <center>
             {% if page_obj.has_previous %}          
-            <a class="button button-black" href="?page={{ page_obj.previous_page_number }}">previous</a>
+            <a class="button button-black" href="?page={{ page_obj.previous_page_number }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}{% if request.GET.lastname %}&lastname={{ request.GET.lastname }}{% endif %}">previous</a>
             {% endif %}
 	  </center>
 	</div>
 	<div class="column">
 	  <center>
-          <h5><b>{{ page_obj.number }}</b></h5>
+          <h5><b>{{ page_obj.number }}/{{ page_num }}</b></h5>
 	  
 	</center>
 	</div>
 	<div class="column">
 	  <center>
           {% if page_obj.has_next %}
-          <a class="button button-black" href="?page={{ page_obj.next_page_number }}">next</a>
+          <a class="button button-black" href="?page={{ page_obj.next_page_number }}{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}{% if request.GET.lastname %}&lastname={{ request.GET.lastname }}{% endif %}">next</a>
           {% endif %}
-	  
+
 	  </center>
 	</div>
-      </div>`
+      </div>
       {% endblock %}
     </div>
   </body>

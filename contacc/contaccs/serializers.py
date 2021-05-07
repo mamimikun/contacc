@@ -21,3 +21,18 @@ class ContactSerializer(serializers.Serializer):
         instance.email = validated_data.get('email', instance.phone_number)
         instance.save()
         return instance
+
+    def validate_name(self, value):
+        if len(value) > 70 or not value.isalpha():
+            raise serializers.ValidationError("name not alpha")
+        return value
+
+    def validate_lastname(self, value):
+        if len(value) > 70 or not value.isalpha():
+            raise serializers.ValidationError("lastname not alpha")
+        return value
+
+    def validate_company(self, value):
+        if len(value) > 70 and not value.isalnum():
+            raise serializers.ValidationError("compnany not alphanumeric")
+        return value

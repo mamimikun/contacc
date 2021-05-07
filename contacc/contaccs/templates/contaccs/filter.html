@@ -1,0 +1,61 @@
+{% extends "contaccs/contact_list.html" %}
+
+{% block body %}
+
+<div class="row">
+  <div class="column">
+    <table>
+      <thead>
+	<tr>
+	  <th>Contact name</th>
+	  <th>View</th>
+	  <th>Delete</th>
+	  <th>Modify</th>
+	</tr>
+      </thead>
+      <tbody>
+	{% for contact in page_obj.object_list %}
+	<tr>
+	  <td>{{contact.name}} {{contact.lastname}}</td>
+	  <td><a class="button" href="/api/contacts/read/{{ contact.id }}">view</a></td>
+	  <td><a class="button button-red" href="/api/contacts/delete/{{ contact.id }}">del</a></td>
+	  <td><a class="button button-blue" href="/api/contacts/updateform/{{ contact.id }}">mod</a></td>
+	<tr>
+	  {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+	
+	<div class="column">
+	  <center>
+            {% if page_obj.has_previous %}          
+            <a class="button button-black" href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+	  </center>
+	</div>
+	<div class="column">
+	  <center>
+          <h5><b>{{ page_obj.number }}</b></h5>
+	  
+	</center>
+	</div>
+	<div class="column">
+	  <center>
+          {% if page_obj.has_next %}
+          <a class="button button-black" href="?page={{ page_obj.next_page_number }}">next</a>
+          {% endif %}
+	  
+	  </center>
+	</div>
+      </div>
+
+<div class="row">
+  <div class="column">
+    <a class="button" href="/api/contacts/">home</a>
+  </div>
+</div>
+
+{% endblock %}
