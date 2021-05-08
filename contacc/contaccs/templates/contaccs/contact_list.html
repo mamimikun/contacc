@@ -39,21 +39,10 @@
       </div>
       <div class="row">
 	<div class="column">
-	  <table>
-	    <thead>
-	      <tr>
-		<th>Contacts:</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      {% for contact in page_obj.object_list %}
-	      <tr>
-		<td style="text-align: right;"><a class="button button-black button-outline" style="width:100%;" href="/api/contacts/read/{{ contact.id }}">{{contact.name}} {{contact.lastname}}</a>
-		
-	      <tr>
-	      {% endfor %}
-	    </tbody>
-	  </table>
+	  <h4>Contact list:<h4>
+	  {% for contact in page_obj.object_list %}
+	  <a class="button button-black button-outline" style="width:100%;" href="/api/contacts/read/{{ contact.id }}">{{contact.name}} {{contact.lastname}}</a>
+	  {% endfor %}
 	</div>
       </div>
       <div class="row">
