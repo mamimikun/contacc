@@ -26,16 +26,14 @@
       </div>
       {% block body %}
       <div class="row">
-	<div class="column">
-	  <a class="button button-black" href="/api/contacts/form/">add contact</a>
-	  <br>
-	</div>
-	<div class="column">
+	<div class="column column-100">
+	  <a class="button button-black" style="width:100%;" href="/api/contacts/form/">add contact</a>
+	  <hr>
 	  <form action="/api/contacts/" method="get">
 	    <input type="text" placeholder="name" name="name">
 	    <input type="text" placeholder="last name" name="lastname">
-	    <input class="button button-black" type="submit" value="filter">
-	    <a class="button button-black button-outline" href="/api/contacts/">clear filter</a>
+	    <input class="button button-black" style="width:40%;" type="submit" value="filter">
+	    <a class="button button-black button-outline" style="float:right;width:59%;" href="/api/contacts/">clear filter</a>
 	  </form>
 	</div>
       </div>
@@ -44,17 +42,14 @@
 	  <table>
 	    <thead>
 	      <tr>
-		<th>Contact name</th>
-		<th style="text-align: right;">Actions</th>
+		<th>Contacts:</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      {% for contact in page_obj.object_list %}
 	      <tr>
-		<td>{{contact.name}} {{contact.lastname}}</td>
-		<td style="text-align: right;"><a class="button button-black button-outline" href="/api/contacts/read/{{ contact.id }}">view</a>
-		<a class="button button-black" href="/api/contacts/deleteconfirm/{{ contact.id }}">del</a>
-		<a class="button button-black button-outline" href="/api/contacts/updateform/{{ contact.id }}">mod</a></td>
+		<td style="text-align: right;"><a class="button button-black button-outline" style="width:100%;" href="/api/contacts/read/{{ contact.id }}">{{contact.name}} {{contact.lastname}}</a>
+		
 	      <tr>
 	      {% endfor %}
 	    </tbody>
